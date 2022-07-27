@@ -1,7 +1,8 @@
 # 서론 
 - Project를 진행하면서 부족했던점을 공부하거나 배우고싶었던 것을 공부한걸 기록하기 위해 만들었다.
 # 본론
-## display : gird and flex
+##CSS
+### display : gird and flex
 web page를 디자인하기 위하여 그림판에 원하는 webpage layout을 그려보았다.<br>
 그림판의 layout처럼 div(block)영역의 넓이나 높이, 위치들이 생각처럼 되지않아 Webpage Layout 을 구성하는데 어려움을 겪었다.<br>
 이같은 문제를 해결하기 위하여 flex와 grid를 알게되었고 학습 후 각각의 방법으로 같은 Web page layout을 만들어 보고 각각의 장점이 무엇인지 알아보려한다.<br>
@@ -49,7 +50,32 @@ web page를 디자인하기 위하여 그림판에 원하는 webpage layout을 �
 ![image](https://user-images.githubusercontent.com/108508922/180651557-6b5d4bc8-8e32-4fc9-9866-d8817fb4fb73.png)
     4. 각 컬럼의 시작지점을 지정하여 위치를 변환시킬수 있다.
 ![image](https://user-images.githubusercontent.com/108508922/180651733-5e96044d-3605-498b-a855-b018baf6e363.png)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+##Javascript
 
+- async vs defer
+  1. script의 코드위치
+    1. head
+      1. HTML 코드를 위에서부터 한줄씩 parsing하다 script code를 만나면 pasrsing을 멈추고 script에 필요한 소스를 서버에서 다운로드 후 다시 pasring한다.
+        1. 단점:script 파일이 크면 사용자가 웹site를 보는데 오래걸린다.  
+      
+    2. head + async(boolean type)
+      1. HTML 코드를 parsing 하다가 script를 만나면 다운로드 명령만 하고 다시 HTML paring을 이어간다.
+      2. script 소스가 다운이 완료되면 parsing을 멈추고 script를 실행 후 parsing을 이어한다.
+        1. 장점:body끝에 배치하는것보다 다운로드 시간의 시간적 효율이 좋다.
+        2. 단점:HTML이 parsing전에 script가 실행되기 때문에 DOM요소 조작시 오류가 있을 수 있다.<br>
+           사용자가 페에지 보는데 늦는다. script의 순서대로가 아닌 다운로드 순서대로 실행.
+          
+    3. head + defer
+      1. HTML 코드를 parsing 하다가 script를 만나면 다운로드 명령만 하고 다시 HTML paring을 끝까지 한다.
+      2. HTML parsing이 끝나면 다운로드 된 script를 실행한다.
+        1. 장점:script의 다운로드 시간효율이 좋고, HTML다운로드가 끝난 후 script를 실행하여 컨텐츠를 보는데도 빠르고 오류를 줄일 수 있다.
+      
+    4. body 끝
+      1. 브라우저가 HTML을 따라 parsing 하고 페이지가 준비된 후 script를 읽어 사용자가 페이지 컨텐츠를 볼 수 있다.
+        1. 장점:사용자가 HTML 컨텐츠를 일찍 볼 수 있다.
+        2. 단점:Javascript에 의존적이라면 사용자가 의미있는 컨텐츠를 보기 위해서는 기다려야한다.
+            
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
